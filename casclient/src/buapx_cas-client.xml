@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<buapxcas>
+ <!-- 应用地址 -->
+	<platAddress>http://www.client.com:8080/cas_client_all</platAddress>
+	<!-- 跳转地址,一般与应用地址相同 -->
+	<redirectAddress>http://www.client.com:8080/cas_client_all</redirectAddress>
+	<!-- 系统本身登陆页，当登录方式为remoteLogin时，当用户未登录，则会跳转回该地址进行登录 -->
+	<loginPage>/login.jsp</loginPage>
+
+	<remoteLogin>true</remoteLogin>
+<!-- 回调地址,不需要改动 -->
+	<appCallback>/cas_callback.jsp</appCallback>
+	<!-- 超时重登陆路径,不需要改动 -->
+	<appRelogin>buapx_relogin.jsp</appRelogin>
+
+	<!-- 重登陆时验证老密码接口地址-->
+	<validatePasswordAddress>http://localhost:9080/cas/buapxInvalidatePassword</validatePasswordAddress>
+<!--登录成功后默认跳转页  -->
+	<appDefaultTargetUrl>/index.jsp</appDefaultTargetUrl>
+<!-- 登录失败时的默认跳转页 -->
+	<authErrorPage>/buapError.jsp</authErrorPage>
+<!-- 是否强制重新登录 -->
+	<sendRenew>false</sendRenew>
+<!-- 后置处理器 -->
+	<postHandlers>
+	 
+     </postHandlers>
+<!-- cas登录地址 -->
+	<loginUrl>http://www.cas.com:9080/cas/remoteLogin</loginUrl>
+<!-- 验证票据地址 -->
+	<validateUrl>http://127.0.0.1:9080/cas</validateUrl>
+<!-- 编码 -->
+	<encoding>UTF-8</encoding>
+<!-- 系统唯一标示符 -->
+	<platName>rtx</platName>
+<!-- 不拦截的过滤路径 -->
+	<exceptSecurityFilterUrl>
+    /**/login*.jsp*
+    /**/login.jsp?*
+    /**/logout.jsp*
+    /**/buaperror.jsp*
+		/**/*.jpg
+		/**/*.js
+		/**/*.gif
+		/**/*.bmp
+		/**/*.png
+		/**/*.xap
+		/**/*.xaml
+		/**/*.css
+      </exceptSecurityFilterUrl>
+<!-- 拦截路径 -->
+	<securityFilterUrl>/**
+	</securityFilterUrl>
+<!--登录成功时，是否重定向至原始访问路径  -->
+	<redirectToOriginal>true</redirectToOriginal>
+<!-- 额外的service参数 ,一般不需要修改-->
+	<awaredServiceProperties>sourceSystem</awaredServiceProperties>
+<!-- 额外的cas参数,一般不需要修改 -->
+	<options>loginType</options>
+	<extParams>
+	</extParams>
+<!-- 客户端类型，目前有iplat4j、bs两种 -->
+	<clientType>bs</clientType>
+	<!-- 是否集群 -->
+	<isCluster>false</isCluster>
+	<!-- 域名 -->
+	<domain></domain>
+	<!-- 跳转逻辑 -->
+	<userRedirectManager>com.baosight.buapx.security.loginbiz.DefaultRedirectManager</userRedirectManager>
+   <!-- 当使用该过滤器出现乱码时，由改过滤器强制进行转码 -->
+   <encodingFilter></encodingFilter>
+
+    <encodingFilterExcludeUrl>
+    <!-- 当个别功能强制转码出现乱码时，由该配置项排除转码 -->
+    </encodingFilterExcludeUrl>
+</buapxcas>
+
+
+
+
