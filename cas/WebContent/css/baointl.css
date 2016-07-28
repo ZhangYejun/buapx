@@ -1,0 +1,78 @@
+html {
+	padding: 0;
+	border: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
+body {
+	font-family: Tahoma, Verdana;
+	font-size: 12px;
+}
+.login_bg {
+	background:#003487 url(../images/services/baointl.gif);
+	background-repeat:repeat-x;
+	margin-top: 0px;
+	margin-left: 10px;
+	
+}
+
+.login_bg .login_box tr{ display:block; float:left; }
+login_box tr td{display:block; float:left; }
+ .tb
+  {
+  background-color:Aqua;
+  width:100%;
+    
+  }
+.usernamefldtxt {
+font-size: 12px;
+color: #FFF;
+}
+
+.usernamefldinput {
+border-bottom: 1px solid rgb(189, 197, 202);
+border-right: 1px solid rgb(189, 197, 202);
+border-top: 1px solid rgb(111, 120, 126);
+border-left: 1px solid rgb(111, 120, 126);
+padding: 3px 2px;
+font-size: 12px;
+width:100px;
+margin-left:2px;
+margin-right:2px;
+}
+
+.loginbtn1{
+border: 0px;
+margin-left:5px;
+margin-top: 2px;
+background: url(../images/services/btn_01.jpg) no-repeat scroll 0% 100% transparent;
+display: block;
+font-size: 0;
+line-height: 0;
+text-indent: -9999px;
+float: left;	
+width: 44px;
+height: 20px;
+border: 0px;
+color:#000;
+display:block;
+
+}
+
+
+#status{
+display:none
+}
+
+.loginbtn2{
+display:none
+
+}
+
+#forgetPwdTr{
+	display:none;
+	}
+.login_box tr td{ border-spacing:0px;  }
+.login_box tr{ border-spacing:0px;  }
+.login_box{ border-spacing:0px;  }

@@ -1,0 +1,212 @@
+ul, ol, li, span, p, form, dl, dt, dd {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	z-index: inherit
+}
+img, a img {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+ul, ol, li {
+	list-style: none
+}
+input {
+	font: 14px verdana, sans-serif;
+	font-weight: bold
+}
+.cursor {
+	cursor: pointer;
+}
+html, body {
+	margin: 0px;
+	padding: 0;
+	font: 12px/1.6 Arial, Helvetica, sans-serif;
+	color: #437ca0;
+}
+
+ body {
+background: url(../images/services/pic_bg_20120530.jpg);
+background-repeat:repeat-x;
+
+ 
+}
+/* 链接颜色 */
+a:link, a:visited {
+	color: #437ca0;
+	text-decoration: none
+}
+a:hover {
+	text-decoration: underline;
+}
+#bg {
+	background: url(../images/services/login.jpg) no-repeat;
+	height:552px;
+	width:963px;
+	margin: 0 auto;
+}
+#main {
+	width:960px;
+	margin: 0px auto;
+}
+#top {
+	height: 40px;
+}
+#top ul {
+	float: right;
+	margin-top: 20px
+}
+#top li {
+	float: left;
+	margin-right: 7px;
+	display: inline
+}
+#content {
+	height: 250px;
+}
+#content .left {
+	width: 339px;
+	float: left;
+}
+#content .left p, #content .left dl {
+	float: left;
+	margin-top: 5px;
+}
+#content .left dl {
+	font-size: 14px;
+	margin: 0 0 38px 22px;
+	width: 118px
+}
+#content .left dt {
+	font-weight: bold;
+	line-height: 28px;
+}
+#content .left dd {
+	color: #666666;
+	line-height: 24px;
+}
+#content .left ol {
+	clear: both;
+	color: #a6a9ad;
+}
+#content .left li {
+	line-height: 30px;
+	text-indent: 10px;
+
+}
+#content .left ol span {
+	font-size: 14px;
+	font-weight: bold;
+	color: #6699ba;
+	margin-right: 8px;
+}
+#content .right {
+	width:385px;
+	height:267px;
+	background: url(../images/services/pic_login.gif) no-repeat;
+	float: right;
+	margin-right:0px;
+	margin-top:10px;
+	
+	
+}
+.right ul {
+	color: #4c4c4c;
+	margin: 25px 0 0 35px;
+	font-size: 14px;
+}
+.right ul li {
+	margin-bottom: 12px;
+}
+#content .right .now {
+	margin: 17px 0 0 260px;
+}
+#content .right .wrong {
+	color: #FF0000;
+	margin: 0 0 17px 0px;
+	font-size: 12px;
+}
+#login_tip {
+	font-size: 14px;
+	color: #ff6600;
+	font-weight: bold;
+	position: absolute;
+	margin-top: 0px;
+}
+#top {
+	height: 150px;
+}
+#ad {
+	clear: both;
+}
+.font12 {
+	font-size: 12px;
+}
+.mar {
+	margin-left: 55px;
+}
+#bottom {
+	clear: both;
+	text-align: center;
+	color: #8c8a8a;
+	padding-top:50px;!important;
+}
+#bottom li {
+	margin-bottom: 5px;
+}
+.wid {
+	width: 183px;
+	_width: 175px;
+	margin-right: 8px;
+}/*输入框宽度*/
+*+html .wid {
+	width: 175px
+}
+.pw {
+	font-size: 12px;
+} /*忘记密码*/
+a.pw:link, a.pw:visited {
+	color: #437ca0;
+	text-decoration: none;
+}
+a.pw:hover {
+	text-decoration: none;
+}
+.passportc {
+	border: 0px #FFA200 solid;
+	height: 0px;
+	width: 0px;
+	_height /**/: 0px;
+	_width /**/: 0px;
+	font-size: 12px;
+	background: #fff;
+	text-align: left;
+}
+.ppselecter {
+	border: 1px solid #FFA700;
+	width: 185px;
+	margin-left: 1px;
+	overflow: hidden
+}
+.ppselecter .active {
+	background: #2AA3E9;
+	color: #333;
+	font-weight: normal;
+}
+.ppselecter .ppseltit {
+	background-color: #DDEEF9;
+	height: 15px;
+	padding-top: 4px;
+	text-indent: 6px;
+	color: #6798B7;
+}
+.ppselecter {
+	border: 1px solid #3E8AB7;
+	width: 185px;
+	_width: 178px;
+	overflow: hidden
+}
+*+html .ppselecter {
+	width: 178px
+}

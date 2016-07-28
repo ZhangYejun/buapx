@@ -1,0 +1,551 @@
+/*
+// ----------------------------------------------------------------------
+// AWS CSS��ʽ��(�����)
+// ����ʽ��������AWS 3.9���ϰ汾
+// ----------------------------------------------------------------------
+*/
+
+/*Ĭ�ϵ�ҳ����ʽ*/
+body{  
+overflow: auto; 
+word-break: break-all;
+scrollbar-base-color: #D2D2D2;
+font-size: 12px; 
+font-family:"Verdana","Arial", "Helvetica", "sans-serif"; 
+padding:0px;
+margin:0px;
+}
+
+fieldset { 
+padding:10px; 
+margin-top:5px; 
+border:1px solid gray; 
+
+} 
+
+fieldset legend { 
+ 
+padding:3px 20px 3px 20px; 
+border:1px solid gray; 
+margin-left:15px;  
+} 
+
+
+/*Ĭ�ϵı����ʽ*/
+table,tr,td{
+word-break: break-all;
+font-size: 12px; 
+font-family:"Verdana","Arial", "Helvetica", "sans-serif"; 
+}
+
+/*Ĭ�ϵ�������ʽ*/
+A:LINK{color:blue}
+A:VISITED{color:blue; TEXT-DECORATION: none;}
+A:HOVER{color:blue}
+
+.AWS_OPINION_TABLE_HEADS{
+	color:#000000;
+	}
+.AWS_OPINION_TABLE_CELL{
+	color:#000000;
+  }	
+
+/*Portlet������ʽ*/
+.aws-portal-window{
+    margin: 0px 0px 1px 0px;
+    padding: 0px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+    background-color: #ffffff;
+}
+
+/*Portlet������ʽ*/
+.aws-portal-window-titlebar-title{
+    background-image:url("../aws_skins/_def/img/portlet-background.gif"); 
+    padding: 0px;
+    margin: 0px;
+    color: #FFFFFF;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: ffffff;
+    font-size: small;
+    font-weight: bold;
+    height:22px;
+    text-valign: center;
+}
+
+/*Portlet������ʽ*/
+.aws-portal-window-content{
+    margin: 0px;
+    padding: 0px;
+}
+
+/*�ֵ䰴ť��ʽ*/
+.actionsoftDictButton {  
+background-image:url("../aws_img/find.gif"); 
+background-repeat: no-repeat;
+background-position:center;
+width:21px;
+height:19px;
+border:1px solid  gray ; 
+cursor:pointer;
+cursor:hand;
+}
+/*�ֵ�ɾ��ť��ʽ*/
+.actionsoftDictDeleteButton {  
+background-image:url("../aws_img/dic_delete.gif"); 
+background-repeat: no-repeat;
+background-position:center;
+width:21px;
+height:19px;
+border:1px solid  gray ; 
+cursor:pointer;
+cursor:hand;
+}
+/*��ַ����ť��ʽ*/
+.actionsoftAddressButton {  
+background-image:url("../aws_img/mancard.gif"); 
+background-repeat: no-repeat;
+background-position:center;
+width:21px;
+height:19px;
+border:1px solid  gray ; 
+cursor:pointer;
+cursor:hand;
+}
+/*���Ű�ť��ʽ*/
+.actionsoftDeptButton {  
+background-image:url("../aws_img/org-1.gif"); 
+background-repeat: no-repeat;
+background-position:center;
+width:21px;
+height:19px;
+border:1px solid  gray ; 
+cursor:pointer;
+cursor:hand;
+}
+/*��ť��ʽ*/
+.actionsoftButton {  
+font-family:"Verdana","Arial", "Helvetica", "sans-serif"; 
+background-image:url("../aws_skins/_def/img/button-background.gif"); 
+font-size: 14px; 
+text-align: center; 
+border-color: #FFFFFF #FFFFFF #8FBCBF; 
+background-position: middle; 
+cursor:pointer;
+height:22px;
+padding:0px 0px 0px 4px;
+margin:0;
+border:1px solid #335799;
+color:#000;
+}
+
+/*�������ʽ*/
+.actionsoftInput {  
+font-weight: normal;
+padding:2px;
+margin:2px;
+color: #000000; 
+background-color: #FFFFFF; 
+border:1px solid  gray ; 
+margin-right: 0px;
+font: 12px tahoma,arial,helvetica,sans-serif;
+
+}
+/*�����disabled��ʽ*/
+.actionsoftInputDisabled{
+  color: #000000;
+  padding:2px;
+	margin:2px;
+  background-color: transparent; 
+font-family:"Verdana","Arial", "Helvetica", "sans-serif"; 
+  font-size: 12px;
+	border:0px solid  gray ;
+}
+/*������ʽ*/
+textarea {
+	line-height:25px;
+	font-family:"Arial";
+	font-size:14px;
+	padding:2px;
+	margin:2px;
+	border:1px solid gray;
+	background:#FFFFFF url(../aws_img/dot_25.gif);
+	resize: none; 
+}
+/*����disabled��ʽ*/
+.textareaDisabled {
+	line-height:25px;
+	background-color: transparent;
+	font-family:"Arial";
+	font-size:14px;
+	padding:2px;
+	margin:2px;
+	border:1px solid dotted gray;
+}
+
+/*�б�ѡ����ʽ*/
+.actionsoftSelect { 
+font-weight: normal; 
+color: #000000; 
+background-color: #FFFFFF; 
+font-family:"Verdana","Arial", "Helvetica", "sans-serif"; 
+font-size: 12px;
+border:1px solid  gray ;
+padding:2px;
+margin:2px;
+}
+
+/*���ͷ��ʽ*/
+td.actionsoftReportTitle{ 
+ color: #000000; 
+ font-family:"Verdana","Arial", "Helvetica", "sans-serif"; 
+ background-image:url("../aws_skins/_def/img/bg-background.gif"); 
+ font-size: 14px; 
+ line-height: normal;
+ height: 20px; 
+ padding-left: 5px;
+ text-align: center;
+ font-weight: bold; 
+ white-space:nowrap ;
+}
+
+/*����������ʽ*/
+td.actionsoftReportData{ 
+font: normal 11px arial,tahoma,helvetica,sans-serif;
+line-height: normal;
+height: 25px;
+padding: 3px 3px 3px 5px;
+word-break: break-all;
+border:1px solid #636363;
+}
+
+/*����������ʽ2*/
+td.actionsoftReportData2{ 
+ background-color: #609A9E;
+ font-family:"Verdana","Arial", "Helvetica", "sans-serif"; 
+ font-size: 12px; 
+ line-height: normal;
+ height: 18px; 
+ padding-left: 10px;
+}
+
+/*�������ʽ*/
+td.actionsoftTitle { 
+ background-color: #FFFFFF;
+ font-family:"Verdana","Arial", "Helvetica", "sans-serif"; 
+ font-size: 18px; 
+ line-height: normal;
+ padding-left: 10px;
+ padding-top: 5px;
+ padding-bottom: 5px; 
+ color: #545252;
+}
+
+/*��������ʽ*/
+td.actionsoftToolbar { 
+ background-color: #CBD9E2;
+ background-image:url("../aws_skins/_def/img/toolbar-background.gif"); 
+ font-family:"Verdana","Arial", "Helvetica", "sans-serif"; 
+ font-size: 12px; 
+ line-height: normal;
+ height: 34px; padding-right: 10px;
+ text-align: right ; 
+}
+
+/*��ҳ��������ʽ*/
+td.actionsoftPageIndex { 
+ background-image:url("../aws_skins/_def/img/pageindex-background.gif"); 
+ font-family:"Verdana","Arial", "Helvetica", "sans-serif"; 
+ font-size: 14px; 
+ line-height: normal;
+ height: 24px; padding-right: 10px;
+ text-align: right ; 
+}
+
+
+/*ѡ���ť��ʽ*/
+.actionsoftPageButton {  
+font-family:"Verdana","Arial", "Helvetica", "sans-serif"; 
+font-size: 14px; 
+text-align: center; 
+cursor:pointer;
+cursor:hand;
+vertical-align: bottom;
+}
+
+/*�����˵���ʽ*/
+tr.actionsoftRowMenu { 
+ background-image:url("../aws_skins/_def/img/rowMenu-background.gif"); 
+ font-family:"Verdana","Arial", "Helvetica", "sans-serif"; 
+ font-size: 9px; 
+ line-height: normal;
+ height: 18px; padding-right: 10px;
+ text-align: left ; 
+ height: 16px; 
+}
+
+/*���㴰�������ʽ*/
+.actionsoftPopupWinCSS {
+POSITION:absolute;
+VISIBILITY:hidden;
+Z-INDEX:200;
+}
+.actionsoftTopic{
+	font-size: 14px;
+	font-weight: bold;
+	background-color: #8FBCBF;
+	color=red;
+}
+.actionsoftPopupTitle {
+	font-size: 10px;
+	font-weight: bold;
+	color:red;
+ 	font-family:"Verdana","Arial", "Helvetica", "sans-serif"; 
+}
+.actionsoftPopupTitle1 {
+	font-size: 11px;
+	color=gray;	
+}
+.actionsoftPopupTitle2 {
+	font-size: 11px;
+}
+
+.actionsoftSheetHeadColor{
+color: #000000;
+background-image:url("../aws_js/extjs2/images/default/grid/grid3-hrow.gif") repeat-y;
+font-size: 12px;
+/*line-height: 13px;*/
+height: 17px;
+/*padding: 3px 3px 3px 5px;*/
+/*white-space:nowrap;*/
+word-break:break-all;
+border:1px solid #636363;
+}
+.actionsoftSheetNumberColor{
+color: #444;
+background:url("../aws_js/extjs2/images/default/grid/grid3-hrow.gif") repeat-y right 50%;
+font-size: 12px;
+padding: 3px 3px 3px 5px;
+white-space:nowrap;
+border:1px solid #636363;
+}
+.actionsoftSheetIndexColor{
+color: #000000;
+background-image:url("../aws_js/extjs2/images/default/grid/grid3-hrow.gif");
+font-size: 12px;
+line-height: normal;
+height: 23px;
+padding-left: 0px;
+white-space:nowrap;
+}
+
+/*--EXTJS*/
+/*XML�ֵ������ʽ*/
+.x-form-field-wrap .x-form-dictionary-trigger {
+  background: transparent url(../aws_js/extjs2/images/default/form/search-trigger.gif) no-repeat 0 0;
+  cursor: pointer;
+  right: 0px;
+}
+/*Ext.Grid��ʽ����*/
+.icon-grid {background-image:url(../aws_img/grid.png) !important;}
+.add {background-image:url(../aws_img/add.gif) !important;}
+.copy {background-image:url(../aws_img/copy.gif) !important;}
+.addRef {background-image:url(../aws_img/adds.gif) !important;}
+.importExcel {background-image:url(../aws_img/file/excel.jpg) !important;}
+.exportExcel {background-image:url(../aws_img/file/excel.jpg) !important;}
+.exportExcelModel {background-image:url(../aws_img/file/excel.jpg) !important;}
+.filter {background-image:url(../aws_img/find.gif) !important;}
+.option {background-image:url(../aws_img/check.gif) !important;}
+.remove {background-image:url(../aws_img/Delete.gif) !important;}
+.save {background-image:url(../aws_img/save.gif) !important;}
+.refresh {background-image:url(../aws_img/refresh2.gif) !important;}
+.undo {background-image:url(../aws_img/redo.gif) !important;}
+.yellowrow {background-color:yellow;}
+.gray {background-color:gray;}
+.ui-tree-leaf {background-image:url(../aws_img/green_icon.jpg) !important;}
+
+/***********Grid�ӱ�DateTime��ʽ����***********/
+.minutecss{
+    padding:4px;
+	height:100%;
+    border-top: 1px solid #a3bad9;
+    background: #dfecfb url(../aws_js/extjs/images/default/shared/glass-bg.gif) repeat-x left top;	
+}
+.y-hour-middle,.y-hour-left,.y-hour-right {
+	font:bold 11px "sans serif", tahoma, verdana, helvetica;
+	overflow:hidden;
+}
+
+.y-hour-right, .y-hour-left {
+	width:18px;
+}
+.y-hour-right{
+	text-align:right;
+}
+.y-hour-middle {
+	padding-top:2px;
+	padding-bottom:2px;
+	color:#0000ff;
+}
+.y-hour-right a, .y-hour-left a{
+	display:block;
+	width:16px;
+	height:16px;
+	background-position: center;
+	background-repeat: no-repeat;
+	cursor:pointer;
+}
+
+.y-hour-right a {
+	background-image: url(../aws_img/arrowRight.gif);
+	margin-right:2px;
+}
+.y-hour-left a{
+	background-image: url(../aws_img/arrowLeft.gif);
+	margin-left:2px;
+}    
+.y-minute-middle,.y-minute-left,.y-minute-right {
+	font:bold 11px "sans serif", tahoma, verdana, helvetica;
+	overflow:hidden;
+}
+
+.y-minute-right, .y-minute-left {
+	width:18px;
+}
+.y-minute-right{
+	text-align:right;
+}
+.y-minute-middle {
+	padding-top:2px;
+	padding-bottom:2px;
+	color:#0000ff;
+}
+.y-minute-right a, .y-minute-left a{
+	display:block;
+	width:16px;
+	height:16px;
+	background-position: center;
+	background-repeat: no-repeat;
+	cursor:pointer;
+}
+
+.y-minute-right a {
+	background-image: url(../aws_img/arrowRight.gif);
+	margin-right:2px;
+}
+.y-minute-left a{
+	background-image: url(../aws_img/arrowLeft.gif);
+	margin-left:2px;
+}   
+/****************end*****************************/ 
+/*MultiComboBox style css*/
+.checked{background-image:url(../aws_js/extjs2/images/default/menu/checked.gif)}   
+.unchecked{background-image:url(../aws_js/extjs2/images/default/menu/unchecked.gif)}  
+.imageSelectPictureView {
+	position:absolute;
+	z-index:9999;
+	padding:1px;
+	border:1px #ccc solid;
+	font-size:12px;
+	display:none;
+	background-color:#FFFFFF;
+}
+.imageSelectPictureViewTitle {
+	position:relative;
+	height:23px;
+	background-color:#E4E4E4;
+	font-size:12px;
+	padding:0;
+	padding-left:5px;
+	line-height:23px;
+	margin:0;
+	width:100%;
+}
+#imageSelectPictureViewInfo{
+	overflow:auto;
+	width:400;
+	height:300;
+}
+/*���?LeftMenu��ʽ add by wangwq */
+#subFormZoneMenuBar {
+	position:fixed;
+	position:expression("absolute");
+	top:0px;
+	left:0px;
+	display:none;
+	/*height:400px;*/
+	font-family:Verdana, Helvetica, Arial;
+	font-weight:500;
+	font-size:12px;
+	cursor:pointer;
+	z-index:5000;
+	background-color:#ffffff;
+	border-left:#eeeeee 1px outset;
+	border-top:#eeeeee 1px outset;
+	border-right:#eeeeee 1px outset;
+	border-bottom:#eeeeee 1px outset;
+}
+.subFormZoneRowClass {
+	position:relative;
+	top:10px;
+	left:5px;
+	width:213px;
+	color:#2A2A2A;
+	border-left:#eeeeee 1px outset;
+	border-top:#eeeeee 1px outset;
+	border-right:#eeeeee 1px outset;
+	border-bottom:#eeeeee 1px outset;
+	padding-left:5px;
+	padding-top:3px;
+	adding-right:5px;
+	padding-bottom:3px;
+	background-color:#DFDFDF;
+	height: 18px;
+	}
+.subFormZoneRowClassSelected {
+	position:relative;
+	top:10px;
+	left:5px;
+	width:211px;
+	*width:213px;
+	color:#2A2A2A;
+	border-left:#EEEEEE 2px outset;
+	border-top:#EEEEEE 2px outset;
+	border-right:#EEEEEE 2px outset;
+	border-bottom:#EEEEEE 2px outset;
+	padding-left:5px;
+	padding-top:3px;
+	adding-right:5px;
+	padding-bottom:3px;
+}
+.subFormZonePullTabClass {
+	position:fixed;
+	position:expression("absolute");
+	top:0px;
+	left:0px;
+	height:100%;
+	width:20px;
+	padding-left:2px;
+	cursor:pointer;
+	color:#2644b2;
+	font-weight:bold;
+	font-size:12px;
+	z-index:5;
+	border-top:#EEEEEE 1px outset;
+	border-right:#EEEEEE 1px outset;
+	border-bottom:#EEEEEE 1px outset;
+	background-color:#e6d395;
+
+	background-repeat:repeat-y;
+
+}
+.subFormZoneInnerClass {
+	height:100%;
+	width:100%;
+}
+.subFormZoneBtnInnerClass {
+/*height:100%;*/
+width:100%;
+}

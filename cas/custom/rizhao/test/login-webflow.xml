@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<on-start>
+		<evaluate  expression="initialFlowSetupAction" />
+		<set name="flowScope.loginType" value="requestParameters.loginType" />  <!-- 选择登录类型,分别为(1)普通登录(2)混合登录[将登陆框嵌入单独的登录页，成功后跳转至首页：mixLogin]  (3)移动端登录 -->
+        <set name="flowScope.redirectUrl" value="requestParameters.redirectUrl" />
+	    <set name="flowScope.cssName" value="requestParameters.cssName" />	     
+	    <set name="flowScope.sUsername" value="requestParameters.sUsername" />	
+	    <set name="flowScope.sPassword" value="requestParameters.sPassword" />
+	       <evaluate  expression="mobileJudgementAction" />
+   </on-start>
+
+	<decision-state id="ticketGrantingTicketExistsCheck">
+		<if test="flowScope.ticketGrantingTicketId neq null" then="hasServiceCheck" else="gatewayRequestCheck" />
+	</decision-state>
+
+
+	<decision-state id="hasServiceCheck">
+		<if test="flowScope.service != null " then="renewRequestCheck"  />
+		<if then="viewMixLoginSuccess" test="flowScope.loginType eq 'mixLogin' "/> 
+	    <if then="viewSimulateLoginSuccess" test="flowScope.loginType eq 'simulateLogin' "/> 
+	    <if then="viewSimulateLoginSuccess" test="flowScope.loginType eq 'tgcLogin' "/> 
+		<if then="viewSimulateLoginSuccess" test="flowScope.loginType eq 'ticketLogin' "/> 
+		<if then="viewGenericLoginSuccess" test="true eq true"/><!-- For default login view -->
+	</decision-state>
+
+	<decision-state id="gatewayRequestCheck">
+		<if test="externalContext.requestParameterMap['gateway'] neq '' &amp;&amp; externalContext.requestParameterMap['gateway'] neq null &amp;&amp; flowScope.service neq null"
+			then="gatewayServicesManagementCheck" else="selectLoginView" />
+	</decision-state>
+
+
+
+	<!-- In cas 3.11, the selectLoginView state may set after generateLoginTicket action -->
+
+	<!-- 选择登录画面，根据登录类型(loginType) -->
+	<decision-state id="selectLoginView">
+		<if then="viewLoginForm" test="flowScope.loginType eq null or requestParameters.loginType eq '' or requestParameters.loginType eq 'default' "/>
+		
+		<if then="viewMobileForm" test="flowScope.loginType eq 'mobileLogin' "/>	<!-- 移动端登录 -->	
+	    <if then="viewMixForm" test="flowScope.loginType eq 'mixLogin' "/>          <!-- 混合登录，iframe嵌入 -->
+	    <if then="viewSimulateForm" test="flowScope.loginType eq 'simulateLogin' "/>   <!-- 模拟登录，传入用户名和密码 -->
+	    <if then="viewTgcForm" test="flowScope.loginType eq 'tgcLogin' "/>            <!-- 通过tgc登录，一般在c/s用 -->
+		 <if then="viewTicketForm" test="flowScope.loginType eq 'ticketLogin' "/>     <!-- 可信ticket url登录 -->
+		<if then="viewLoginForm" test="true eq true"/><!-- For default login view -->
+	</decision-state>
+
+	<!-- 选择登录画面，出错时使用,根据登录类型(loginType) -->
+	<decision-state id="selectReLoginView">
+		<if then="viewLoginForm" test="flowScope.loginType eq null or requestParameters.loginType eq '' or requestParameters.loginType eq 'default' "/>
+		
+		<if then="viewMobileForm" test="flowScope.loginType eq 'mobileLogin' "/>			
+	    <if then="viewMixForm" test="flowScope.loginType eq 'mixLogin' "/>
+	    <if then="viewSimulateForm" test="flowScope.loginType eq 'simulateLogin' "/>
+	     
+	  	<if then="viewLoginForm" test="true eq true"/><!-- For default login view -->
+	</decision-state>
+
+
+	<decision-state id="renewRequestCheck">
+		<if test="externalContext.requestParameterMap['renew'] neq '' &amp;&amp; externalContext.requestParameterMap['renew'] neq null &amp;&amp; externalContext.requestParameterMap['renew'] eq 'true'"
+			then="viewLoginForm" else="generateServiceTicket" />
+	</decision-state>
+
+	<!-- The "warn" action makes the determination of whether to redirect directly to the requested service or display the "confirmation"
+		page to go back to the server. -->
+	<decision-state id="warn">
+		<if test="flowScope.warnCookieValue" then="showWarningView" else="redirect" />
+	</decision-state>
+
+
+
+
+	<!--  常规默认登录页面，输入用户名/密码/验证码等 -->
+	<view-state id="viewLoginForm" view="casLoginView" model="buapxCredentials">
+		<var name="buapxCredentials" class="com.baosight.buapx.cas.authentication.principal.BuapxUsernamePasswordCredentials" />
+        <binder>
+            <binding property="username" />
+            <binding property="password" />
+            <binding property="userType"/>
+            <binding property="validatecode" />
+            <binding property="rememberMe" />
+        </binder>
+        <on-entry>
+            <set name="viewScope.commandName" value="'buapxCredentials'" />
+        </on-entry>
+		<transition on="submit" bind="true" validate="true" to="realSubmit">
+			<set name="flowScope.credentials" value="buapxCredentials" />
+            <evaluate expression="authenticationViaFormAction.doBind(flowRequestContext, flowScope.credentials)" />
+        </transition>
+	</view-state>
+
+	<!-- 手机浏览器登录页面，和常规类似，只是样式适配手机屏幕 -->
+	<view-state id="viewMobileForm" view="mobileLoginView" model="buapxCredentials">
+		<var name="buapxCredentials" class="com.baosight.buapx.cas.authentication.principal.BuapxUsernamePasswordCredentials" />
+        <binder>
+            <binding property="username" />
+            <binding property="password" />
+            <binding property="validatecode" />
+             <binding property="rememberMe" />            
+        </binder>
+        <on-entry>
+            <set name="viewScope.commandName" value="'buapxCredentials'" />
+        </on-entry>
+		<transition on="submit" bind="true" validate="true" to="realSubmit">
+			<set name="flowScope.credentials" value="buapxCredentials" />		
+            <evaluate expression="authenticationViaFormAction.doBind(flowRequestContext, flowScope.credentials)" />
+        </transition>
+	</view-state>
+	
+	<!-- 模拟登录，传入用户名和密码，直接登录，可以通过url或者post方式 -->
+	<view-state id="viewSimulateForm" model="buapxCredentials" view="simulateLoginView">
+		<var name="buapxCredentials" class="com.baosight.buapx.cas.authentication.principal.BuapxUsernamePasswordCredentials" />
+        <binder>
+           <binding property="username" />
+			<binding property="password" />
+			<binding property="validatecode" />
+        </binder>
+        <on-entry>
+            <set name="viewScope.commandName" value="'buapxCredentials'" />
+        </on-entry>
+		<transition on="submit" bind="true" validate="true" to="realSubmit">
+			<set name="flowScope.credentials" value="buapxCredentials" />		
+            <evaluate expression="authenticationViaFormAction.doBind(flowRequestContext, flowScope.credentials)" />
+        </transition>
+	</view-state>
+	
+	<!--  混合登录，cas提供用户名和密码框，业务系统通过iframe方式嵌入之，然后登录 -->
+	<view-state id="viewMixForm" view="mixLoginView" model="buapxCredentials">
+		<var name="buapxCredentials" class="com.baosight.buapx.cas.authentication.principal.BuapxUsernamePasswordCredentials" />
+        <binder>
+            <binding property="username" />
+            <binding property="password" />
+            <binding property="validatecode" />
+        </binder>
+        <on-entry>
+            <set name="viewScope.commandName" value="'buapxCredentials'" />
+        </on-entry>
+		<transition on="submit" bind="true" validate="true" to="realSubmit">
+			<set name="flowScope.credentials" value="buapxCredentials" />		
+            <evaluate expression="authenticationViaFormAction.doBind(flowRequestContext, flowScope.credentials)" />
+        </transition>
+	</view-state>
+	
+	<!-- 通过tgc登录，传入tgc，直接登录。首先需要通过validatePasswordCreateTgtController获取tgc，一般是c/s程序用到 -->
+	<view-state id="viewTgcForm" view="tgcLoginView" model="tgcCredentials">
+		<var name="tgcCredentials" class="com.baosight.buapx.cas.authentication.principal.TgcCredentials" />
+        <binder>
+            <binding property="tgc" />
+        </binder>
+        <on-entry>
+            <set name="viewScope.commandName" value="'tgcCredentials'" />
+        </on-entry>
+		<transition on="submit" bind="true" validate="false" to="realSubmit">
+			<set name="flowScope.credentials" value="tgcCredentials" />		
+            <evaluate expression="authenticationViaFormAction.doBind(flowRequestContext, flowScope.credentials)" />
+        </transition>
+	</view-state>
+	<!-- 可信链接登录，传入生成的ticket，验证ticket成功后登录，一般用于可信站点的单点登录 -->
+    <view-state id="viewTicketForm" view="ticketLoginView" model="ticketCredentials">
+		<var name="ticketCredentials" class="com.baosight.buapx.cas.authentication.principal.TicketCredentials" />
+        <binder>
+            <binding property="userName" />
+            <binding property="ticket" />
+        </binder>
+        <on-entry>
+            <set name="viewScope.commandName" value="'ticketCredentials'" />
+        </on-entry>
+		<transition on="submit" bind="true" validate="false" to="realSubmit">
+			<set name="flowScope.credentials" value="ticketCredentials" />
+            <evaluate expression="authenticationViaFormAction.doBind(flowRequestContext, flowScope.credentials)" />
+        </transition>
+	</view-state>
+
+<action-state id="captchaValidate">
+<evaluate expression="captchaValidateAction"/>
+	<transition on="success" to="realSubmit" />
+	<transition on="error"  to="selectLoginView" />
+</action-state>
+
+	<action-state id="realSubmit">
+		<evaluate expression="authenticationViaFormAction.submit(flowRequestContext, flowScope.credentials, messageContext)" />
+		<transition on="warn" to="warn" />
+		<transition on="success" to="sendTicketGrantingTicket" />
+		<transition on="error" to="selectReLoginView" />
+		<!-- <transition on="error" to="errorCount" /> -->
+	</action-state>
+
+
+
+
+	<action-state id="sendTicketGrantingTicket">
+		<evaluate expression="sendTicketGrantingTicketAction" />
+		<transition to="pwdExpireCheck" />  <!--  如果需要密码过期检查，改为pwdExpireCheck     否则为serviceCheck-->
+	</action-state>
+
+
+
+   <action-state id="pwdExpireCheck">
+   <evaluate expression="pwdExpireCheckAction"/>
+   <transition on="true" to="passwordExpiryView"/>
+   <transition on="false" to="serviceCheck" />
+   </action-state>
+
+
+
+	<decision-state id="serviceCheck">
+		<if test="flowScope.service neq null" then="generateServiceTicket" />
+		<if then="viewGenericLoginSuccess" test="flowScope.loginType eq null or flowScope.loginType eq '' or flowScope.loginType eq 'default' "/>
+	    <if then="viewMixLoginSuccess" test="flowScope.loginType eq 'mixLogin' "/>
+		<if then="viewSimulateLoginSuccess" test="flowScope.loginType eq 'simulateLogin' "/> 
+		<if then="viewSimulateLoginSuccess" test="flowScope.loginType eq 'tgcLogin' "/> 
+		<if then="viewSimulateLoginSuccess" test="flowScope.loginType eq 'ticketLogin' "/> 
+		<if then="viewGenericLoginSuccess" test="true eq true"/><!-- For default login success view -->
+	</decision-state>
+
+	<action-state id="generateServiceTicket">
+		<evaluate expression="generateServiceTicketAction" />
+		<transition on="success" to="warn" />
+		<transition on="error" to="viewLoginForm" />
+		<transition on="active" to="activeView"/>
+		<transition on="gateway" to="gatewayServicesManagementCheck" />
+	</action-state>
+
+
+
+	<action-state id="redirect">
+		<evaluate expression="flowScope.service.getResponse(requestScope.serviceTicketId)" result-type="org.jasig.cas.authentication.principal.Response"
+			result="requestScope.response" />
+		<transition to="postRedirectDecision" />
+	</action-state>
+
+	<action-state id="gatewayServicesManagementCheck">
+		<evaluate expression="gatewayServicesManagementCheck" />
+		<transition on="success" to="redirect" />
+	</action-state>
+
+	<decision-state id="postRedirectDecision">
+		<if test="requestScope.response.responseType.name() eq 'POST'" then="postView" else="redirectView" />
+	</decision-state>
+
+
+
+	<end-state id="viewGenericLoginSuccess" view="casLoginGenericSuccessView" />
+
+    <end-state id="viewMixLoginSuccess" view="mixLoginSuccessView" >
+         <!-- <on-entry>
+            <set name="requestScope.redirectUrl" value="flowScope.redirectUrl"></set>
+        </on-entry>   -->
+     </end-state>
+        
+     <end-state id="viewSimulateLoginSuccess" view="simulateLoginSuccessView" />
+
+	<end-state id="showWarningView" view="casLoginConfirmView" />
+
+	<end-state id="postView" view="postResponseView">
+		<on-entry>
+			<set name="requestScope.parameters" value="requestScope.response.attributes" />
+			<set name="requestScope.originalUrl" value="flowScope.service.id" />
+		</on-entry>
+	</end-state>
+
+
+	<end-state id="redirectView" view="externalRedirect:${requestScope.response.url}" />
+
+	<end-state id="viewServiceErrorView" view="viewServiceErrorView" />
+
+	<end-state id="viewServiceSsoErrorView" view="viewServiceSsoErrorView" />
+
+
+	<end-state id="activeView" view="externalRedirect:${flowScope.activePage}" />
+
+    <end-state id="passwordExpiryView" view="externalRedirect:${flowScope.pwdExpiryPage}"/>
+
+
+	<global-transitions>
+		<transition to="viewServiceErrorView" on-exception="org.springframework.webflow.execution.repository.NoSuchFlowExecutionException" />
+		<transition to="viewServiceSsoErrorView" on-exception="org.jasig.cas.services.UnauthorizedSsoServiceException" />
+		<transition to="viewServiceErrorView" on-exception="org.jasig.cas.services.UnauthorizedServiceException" />
+	</global-transitions>
+</flow>

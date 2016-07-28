@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+
+
+    <!-- Ticket Registry .  Default in mem-->
+  <!-- 
+    <bean id="ticketRegistry" class="com.baosight.buapx.ticketregistry.DefaultTicketRegistry" />
+-->
+
+  <!-- Quartz
+	TICKET REGISTRY CLEANER ,not used in nosql because of ttl 
+	  <bean id="ticketRegistryCleaner" class="org.jasig.cas.ticket.registry.support.DefaultTicketRegistryCleaner"
+		p:ticketRegistry-ref="ticketRegistry" />
+
+	<bean id="jobDetailTicketRegistryCleaner" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"
+		p:targetObject-ref="ticketRegistryCleaner"
+		p:targetMethod="clean" />
+
+	<bean id="triggerJobDetailTicketRegistryCleaner" class="org.springframework.scheduling.quartz.SimpleTriggerBean"
+		p:jobDetail-ref="jobDetailTicketRegistryCleaner"
+		p:startDelay="20000"
+		p:repeatInterval="5000000"/>   -->
+		
+		
+
+
+
+<!-- 	 <bean id="ticketRegistry" class="com.baosight.buapx.ticketregistry.RedisTicketRegistry" >
+ 	<constructor-arg index="0" ref="redisPoolConfig"/>
+ 	<constructor-arg index="1" value="${redis.host}"/>
+ 	<constructor-arg index="2" value="${redis.port}"/>
+ 	<constructor-arg index="3" value="${redis.timeout}"/>
+ 	<constructor-arg index="4" value="${redis.ttl}"/>
+
+ 	</bean>
+  	<bean id="redisPoolConfig" class="redis.clients.jedis.JedisPoolConfig" >
+  	<property name="maxIdle" value="${redis.maxIdle}"/>
+  	<property name="blockWhenExhausted" value="false"/>
+  	<property name="maxTotal" value="${redis.maxTotal}"/>
+  	<property name="testOnBorrow" value="${redis.testOnBorrow}"/> -->
+<!--     </bean>  -->
+
+
+    <!-- memcached  -->
+ <bean id="ticketRegistry" class="com.baosight.buapx.ticketregistry.MemcachedTicketRegistry" >
+ 	<constructor-arg index="0" ref="memcachedClient"/>
+ 	<constructor-arg index="1" value="${memcached.timeout}"/>
+ 	<constructor-arg index="2" value="${memcached.ttl}"/>
+   </bean>  
+
+
+
+
+
+</beans>

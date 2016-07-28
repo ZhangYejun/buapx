@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+ 	<bean id="loginTicketAnalyser" class="com.baosight.buapx.sso.TDESLoginTicketAnalyser">
+ 	 <property name="splitStr" value="-_-"></property>
+ 	 <property name="safeCode" value="buapx"></property>
+ 	 <property name="key" value="37d5aed075525d4fa0fe635231cba230"></property>
+ 	 <property name="expireInMills" value="1800000"></property>
+ 	</bean>
+</beans>

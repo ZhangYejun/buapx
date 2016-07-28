@@ -1,0 +1,78 @@
+html {
+	border-left-width: 0px; height: 100%; border-right-width: 0px; border-bottom-width: 0px; padding-bottom: 0px; padding-top: 0px; padding-left: 0px; margin: 0px; padding-right: 0px; border-top-width: 0px; width: 100%
+}
+body {
+	 color: black;
+    font-family: 微软雅黑,宋体;
+    font-size: 12px;
+    
+}
+
+
+.login_bg {
+	margin-left: 10px; margin-top: -10px;
+}
+.login_box tr td {
+	height: 33px; 
+	
+}
+.usernamefldtxt {
+	font-size: 12px; color: #333;
+}
+.usernamefldinput {
+	background: none repeat scroll 0 0 #F4F9FF;
+    border: 1px solid #A5A6A6;
+    font-size: 14px;
+    height: 18px;
+    margin-left:3px;
+    position: relative;
+    width: 160px;
+    margin-left:20px;
+    margin-left: 0px;
+    width: 86px;
+}
+
+.loginbtn1 {
+	border-left-width: 0px; font-size: 0px; height: 26px; border-right-width: 0px; background: url(../images/loginbutton_narrow.png) no-repeat; border-bottom-width: 0px; float: left; margin-top: 5px; display: block; line-height: 0; border-top-width: 0px; width:72px; margin-right: 0px; text-indent: -9999px;width: 45px;
+}
+.loginbtn2 {
+	border-left-width: 0px; font-size: 0px; height:26px; border-right-width: 0px; background: url(../images/resetpswbutton_narrow.png) no-repeat 0% 100%; border-bottom-width: 0px; float: left; margin-top: 5px; display: block; line-height: 0; margin-left: 5px;border-top-width: 0px; width:72px; text-indent: -9999px;margin-left:5px;width: 45px;
+}
+.loginbtn1:hover {
+	border-left-width: 0px; font-size: 0px; height:26px; border-right-width: 0px; background: url(../images/loginbutton_onmouse_narrow.png) no-repeat; border-bottom-width: 0px; float: left; margin-top: 5px; display: block; line-height: 0; border-top-width: 0px; width: 72px; margin-right: 0px; text-indent: -9999px; width: 45px;
+}
+.loginbtn2:hover{
+	border-left-width: 0px; font-size: 0px; height: 26px; border-right-width: 0px; background: url(../images/resetpswbutton_onmouse_narrow.png) no-repeat 0% 100%; border-bottom-width: 0px; float: left; margin-top: 5px; display: block; line-height: 0; border-top-width: 0px; width: 72px; text-indent: -9999px; margin-left:5px;width: 45px; margin-left:5px;
+	
+}
+.bottonfld {
+margin-top: -5px; margin-left: 38px;
+}
+#forgetPwd{
+	margin-left: 25px;
+	color:black;
+	}
+
+.errors{
+	margin-left:40px;
+	display: inline;
+	}
+input[type="text"], input[type="password"], .ui-autocomplete-input, textarea, .uneditable-input {
+    -moz-box-sizing: border-box;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+    color: black;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 18px;
+    padding: 2px;
+}
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
+    border: 1px solid #80BFFF;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px rgba(82, 168, 236, 0.6);
+    outline: 0 none;
+}
+input[type="file"]:focus, input[type="checkbox"]:focus, select:focus {
+    box-shadow: none;
+    outline: 1px dotted #666666;
+}

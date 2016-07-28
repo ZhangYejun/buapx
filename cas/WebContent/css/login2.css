@@ -1,0 +1,347 @@
+ul, ol, li, span, p, form, dl, dt, dd {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	z-index: inherit
+}
+
+.navbar-header-logo {
+	width: 196px;
+	height: 65px;
+	background-color: #0060af;
+	display: block;
+	float: left;
+}
+img, a img {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+ul, ol, li {
+	list-style: none
+}
+input {
+	font: 14px verdana, sans-serif;
+	font-weight: bold
+}
+.cursor {
+	cursor: pointer;
+}
+html, body {
+	margin: 0px;
+	padding: 0;
+	font: 12px/1.6 Arial, Helvetica, sans-serif;
+
+}
+
+ body {
+	 background-color:#FFF
+
+ 
+}
+/* 链接颜色 */
+a:link, a:visited {
+	color: #437ca0;
+	text-decoration: none
+}
+a:hover {
+	text-decoration: underline;
+}
+#bg {
+	background: url(../images/login.jpg) no-repeat;
+	height:552px;
+	width:963px;
+	margin: 0 auto;
+}
+#main {
+	width:960px;
+	margin: 0px auto;
+}
+#top {
+	height: 40px;
+}
+#top ul {
+	float: right;
+	margin-top: 20px
+}
+#top li {
+	float: left;
+	margin-right: 7px;
+	display: inline
+}
+
+
+
+
+.loginbg_left ul {
+	color: #4c4c4c;
+		font-size: 14px;
+		padding:0px;
+		margin-left:50px;
+}
+.loginbg_left form ul li {
+	margin-bottom: 24px;
+}
+.loginbg_left.now {
+	margin: 17px 0 0 260px;
+}
+.loginbg_left.wrong {
+	color: #FF0000;
+	margin: 0 0 17px 130px;
+	font-size: 12px;
+}
+.login_tip {
+	font-size: 14px;
+	color: #ff6600;
+	font-weight: bold;
+	position: absolute;
+	margin-top: 0px;
+}
+#top {
+	height: 150px;
+}
+#ad {
+	clear: both;
+}
+.font12 {
+	font-size: 12px;
+}
+.mar {
+	margin-left: 55px;
+}
+#bottom {
+	clear: both;
+	text-align: center;
+	color: #8c8a8a;
+	padding-top:50px;!important;
+}
+#bottom li {
+	margin-bottom: 5px;
+}
+#username{
+	color:#666;
+	font-size:12px;
+	font-weight:100;
+	height:18px;
+	line-height:18px;
+	width:177px;
+	margin-left:-5px
+}
+.wid {
+	width: 213px;
+	_width: 205px;
+	margin-right: 8px;
+	line-height:20px;
+	height:20px;
+	
+}/*输入框宽度*/
+*+html .wid {
+	width: 175px
+}
+.pw {
+	font-size: 12px;
+} /*忘记密码*/
+a.pw:link, a.pw:visited {
+	color: #437ca0;
+	text-decoration: none;
+}
+a.pw:hover {
+	text-decoration: none;
+}
+.passportc {
+	border: 0px #FFA200 solid;
+	height: 0px;
+	width: 0px;
+	_height /**/: 0px;
+	_width /**/: 0px;
+	font-size: 12px;
+	background: #fff;
+	text-align: left;
+}
+.ppselecter {
+	border: 1px solid #FFA700;
+	width: 185px;
+	margin-left: 1px;
+	overflow: hidden
+}
+.ppselecter .active {
+	background: #2AA3E9;
+	color: #333;
+	font-weight: normal;
+}
+.ppselecter .ppseltit {
+	background-color: #DDEEF9;
+	height: 15px;
+	padding-top: 4px;
+	text-indent: 6px;
+	color: #6798B7;
+}
+.ppselecter {
+	border: 1px solid #3E8AB7;
+	width: 185px;
+	_width: 178px;
+	overflow: hidden
+}
+*+html .ppselecter {
+	width: 178px
+}
+
+
+.menu_inner {
+	width:1003px;
+	margin: 0 auto;
+
+}
+.menu_item_blue {
+	background-image: url(../images/help-hd-bg.png);
+	background-repeat: repeat-x;
+	height: 34px;
+	line-height: 34px;
+margin: 0 auto;
+
+}
+.menu_item_left ul {
+	list-style-type: none;
+	float: left;
+	font-family: Microsoft Yahei, SimSun;
+	font-family: \5FAE\8F6F\96C5\9ED1;
+	margin-left:30px;
+}
+.menu_item_left ul li {
+	list-style-type: none;
+	float: left;
+	background-image: url(../images/nav_blue_img.gif);
+	background-repeat: no-repeat;
+	background-position: right;
+	padding-right: 8px;
+	padding-left: 8px;
+	height: 34px;
+}
+.menucurrent {
+	background-image: url(../images/navcurrent.png);
+	background-repeat: no-repeat;
+	height: 34px;
+	display: block;
+	outline: none;
+	width:120px;
+	text-align:center;
+	color:#0066CC;	
+	cursor: hand;
+	
+	
+}
+
+.menu_item_blue .menu_item_left ul li .menucurrent {
+    color:#0066CC;
+}
+.menu_item_blue .menu_item_left ul li a {
+	text-decoration: none;
+	font-size: 14px;
+	color: #FFFFFF;
+	font-weight: bold;
+	outline: none;
+	display: block;
+	outline: none;
+	width:120px;
+	cursor: hand;
+	text-align:center;
+}
+.menu_item_blue .menu_item_left ul li a:hover {
+	text-decoration: none;
+	font-size: 14px;
+	color:#0066CC;
+	font-weight: bold;
+	outline: none;
+	cursor: hand;
+}
+.menu_item_blue .menu_item_left ul li a:active {
+	text-decoration: none;
+	font-size: 14px;
+	color:#003399;
+	font-weight: bold;
+	outline: none;
+	cursor: hand;
+}
+.menu_item_blue .menu_item_right a{ color:#ffe21d; float:right; padding-right:30px;}
+.g-header .topbar_right {color:#929291;}
+.g-header .topbar_right a{ color:#929291;}
+.mainiframe{ width:1003px; margin:auto; background-color:#FFF; padding:0px; padding-top:20px; 
+  }
+  
+  .g-header {
+	height: 60px;
+	border:0px;
+	width: 1003px;
+	margin: 0 auto;
+	padding:0px;
+	
+	
+}
+
+/*logo*/
+.g-header-left {
+	width: 250px;
+	margin-top: 0px;
+	display: block;
+	float: left;
+	padding-left: 15px;
+	padding-top:10px;
+	
+}
+/*滚动*/
+.g-header-word{
+	height: 50px;
+	font-size: 14px;
+	color: #09F;
+	display: block;
+	width: 409px;
+	line-height: 46px;
+	display: block;
+	float: left;
+}
+
+#container {
+	margin: 0 auto;
+	background-image:url(../images/hd-bg.png);
+	background-position:top;
+	background-repeat:repeat-x;
+	
+}
+
+#mainContent02 {
+	margin-bottom: 5px;
+	height:450px;
+	padding-top:0px;
+	background-repeat:repeat-x;
+	background-image:url(../images/hd-bg2.png) ;
+	padding-top:20px; 
+	
+	
+}
+.loginbg{ background-image:url(../images/login.png); background-position:center top; background-repeat:no-repeat; width:1003px; height:300px; display:block;  margin:auto;  padding-top:70px; }
+
+.loginbg_left{ width:420px; height:200px;margin-top:0px; float:left; margin-left:80px; _margin-left:50px; }
+
+.loginbg_right{ width:330px; height:200px; margin-top:20px;  float:right; margin-right:90px; _ margin-right:50px; }
+
+.btn_submit, .btn_submit_l {
+    background: url("../images/btn.gif") no-repeat scroll 0 -82px transparent;
+    border: 0 none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    height: 28px;
+    line-height: 28px;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 95px;
+}
+.marquees ul li { line-height:25px; height:25px;}
+.marquees ul li a{ color:#000; font-size:14px;}
+
+.marquees ul li a:hover{ color:#069;}
+
+
+.footer{ background-image:url(../images/footer-static.jpg); background-repeat:repeat-x; color:#333; text-align:center; height:59px; line-height:59px; }

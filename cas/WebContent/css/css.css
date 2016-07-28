@@ -1,0 +1,364 @@
+.css {
+}
+body {
+
+
+}
+#wrapper {
+	width: 1001px;
+	margin-right: auto;
+	margin-left: auto;
+
+}
+* {
+	font-size: 12px;
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+.new_password {
+	margin-left: 51px;
+}
+
+.clear {
+	clear: left;
+}
+.validation {
+	float: right;
+	height: 20px;
+	width: 53px;
+}
+.complete {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.font_gray {
+	color: #666;
+}
+
+.date {
+	font-size: 12px;
+	font-weight: normal;
+}
+.zhaohuimima {
+	background-color: #FFF;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+.btn {
+	line-height: 23px;
+	background-color: #FFF;
+	background-image: url(../images/services/btn.gif);
+	background-repeat: no-repeat;
+	text-align: center;
+	height: 23px;
+	width: 53px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	font-weight: bold;
+	color: #FFF;
+}
+
+
+.returns {
+	float: right;
+	position: relative;
+	bottom: 25px;
+}
+
+#top {
+	background-image: url(../images/services/top.jpg);
+	background-repeat: no-repeat;
+	height: 120px;
+}
+#main {
+	background-color: #FFF;
+	background-image: url(../images/services/bg_yy.jpg);
+	background-repeat: repeat-x;
+	background-position: top;
+	width: 1001px;
+	margin: 0px;
+	padding: 0px;
+}
+#main #left{
+	background-color: #e7e7e7;
+	width: 192px;
+	padding: 10px;
+	float: left;
+}
+#block_1 {
+	background-color: #F6F8F7;
+	border: 1px solid #cccccc;
+}
+#block_1 dl {
+	height: 70px;
+	padding: 5px;
+}
+#block_1 dt {
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 5px;
+}
+#block_1 dd {
+	line-height: 25px;
+	margin-top: 5px;
+}
+#main #mid {
+	background-image: url(../images/services/folding_bg.gif);
+	background-repeat: repeat-y;
+	height: 280px;
+	width: 9px;
+	float: left;
+	margin-left: 2px;
+	padding-top: 220px;
+}
+#folding_arrow {
+	background-image: url(../images/services/folding_arrow.gif);
+	background-repeat: no-repeat;
+	height: 8px;
+	width: 7px;
+}
+#right {
+	float: left;
+	padding-top: 5px;
+	padding-left: 10px;
+	width:760px;	
+}
+#right h1 {
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #d7d7d7;
+	height: 30px;
+	line-height: 30px;
+	padding-top: 10px;
+}
+#tab {
+	margin-top: 15px;
+}
+
+#tab h2 {
+	font-size: 18px;
+	color: #033d8b;
+	margin-bottom: 10px;
+}
+#tab td {
+	line-height: 34px;
+	text-indent: 5px;
+}
+.white {
+	background-color: #FFF;
+}
+.gray {
+	background-color: #f3f3f3;
+}
+
+.table_bg {
+	background-color: #c1c1c1;
+	border: 1px solid #5c8abe;
+}
+.tit_bg {
+	background-image: url(../images/services/table_top_bg.gif);
+	background-repeat: repeat-x;
+	height: 33px;
+	position: relative;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-top-color: #8da0af;
+	border-right-color: #8da0af;
+	border-left-color: #8da0af;
+}
+.tablebtm_bg {
+	background-image: url(../images/services/table_tmp_bg.gif);
+	background-repeat: repeat-x;
+	height: 37px;
+}
+.collect {
+	line-height: 34px;
+	background-image: url(../images/services/jieruxitong_bg.jpg);
+	background-repeat: no-repeat;
+	text-align: center;
+	height: 34px;
+	width: 117px;
+	font-size: 14px;
+	margin-left: 10px;
+}
+
+.span_img {
+	position: absolute;
+	right: 0px;
+}
+#users_login {
+	width: 427px;
+	float: left;
+}
+#zhuyishixiang {
+	float: left;
+	width: 574px;
+}
+
+#users_login #form1 {
+	margin-top: 10px;
+	float: left;
+}
+
+.users_login_h1 {
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #b6b6b6;
+	
+	margin-top: 20px;
+	text-indent: 4em;
+}
+.dotted {
+	border-left-width: 1px;
+	border-left-style: dashed;
+	border-left-color: #CCC;
+	float: left;
+	height: 100px;
+	width: 1px;
+	margin-left: 48px;
+	margin-right: 10px;
+}
+#zhuyishixiang p {
+	line-height: 100px;
+	height: 100px;
+}
+#btm {
+	line-height: 33px;
+	background-image: url(../images/services/btm_bg.gif);
+	background-repeat: repeat-x;
+	text-align: center;
+	height: 33px;
+	margin-top: 10px;
+}
+.page1_btm {
+	text-align: center;
+	height: 33px;
+	border-top-width: 1px;
+	border-top-style: dashed;
+	border-top-color: #CCC;
+	line-height: 33px;
+	margin-top: 10px;
+	color: #757474;
+}
+.password2_btm {
+	text-align: center;
+	height: 33px;
+	border-top-width: 1px;
+	border-top-style: dashed;
+	border-top-color: #CCC;
+	line-height: 33px;
+	margin-top: 50px;
+	color: #757474;
+}
+
+#retrieve_password h1 {
+	text-indent: 5em;
+	margin-top: 15px;
+}
+#retrieve_password ul {
+	margin-top: 25px;
+	margin-left: 180px;
+}
+#retrieve_password li {
+	line-height: 18px;
+	float: left;
+}
+#retrieve_password #block_bg {
+	width: 400px;
+	margin-left: 200px;
+	margin-top: 15px;
+}
+.block_bg {
+	width: 400px;
+	margin-left: 200px;
+	margin-top: 15px;
+}
+#frm{
+	background-image: url(../images/services/frm_bg.gif);
+	background-repeat: repeat-y;
+	width: 400px;
+	text-align: center;
+}
+#password1_frm ,#password3_frm,#password5_frm{
+	background-image: url(../images/services/frm_bg.gif);
+	background-repeat: repeat-y;
+	width: 400px;
+	height: 200px;
+}
+#password1_frm #form1 {
+	width: 300px;
+	margin-left: 50px;
+}
+#password3_frm  #tit{
+	width: 260px;
+	margin-left: 20px;
+	background-color: #e2f5ff;
+	border: 1px solid #00a8ff;
+	padding-left: 100px;
+	height: 30px;
+	line-height: 30px;
+}
+#password5_frm #tit {
+	height: 55px;
+	width: 260px;
+	margin-left: 20px;
+	padding-left: 100px;
+	border: 1px solid #00a8ff;
+	background-color: #E3F5FF;
+	padding-top: 5px;
+}
+
+#password3_frm p {
+	line-height: 25px;
+	margin-right: 20px;
+	margin-left: 20px;
+	margin-top: 20px;
+	color: #6b6b6b;
+}
+
+.mid {
+	margin-left: 80px;
+	margin-top: 20px;
+}
+
+
+#frm #tit, #password1_frm #tit{
+	border: 1px solid #00a8ff;
+	height: 24px;
+	background-color: #e2f5ff;
+	line-height: 24px;
+	width: 360px;
+	margin-left: 20px;
+	text-align: left;
+	display: block;
+}
+.retrieve_password_btn {
+	color: #FFF;
+	background-image: url(../images/services/page2_btn.jpg);
+	background-repeat: no-repeat;
+	text-align: center;
+	height: 26px;
+	width: 124px;
+	background-color: #FFF;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+#wrong {
+	margin-right: auto;
+	margin-left: auto;
+	width: 612px;
+	margin-top: 30px;
+}

@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/webflow-config http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd">
+
+	<import resource="classpath*:buapx_framework/cas/propertyFileConfigurer.xml" />
+	<!-- Locale Resolver <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"
+		/> -->
+	<bean id="fixedLocaleResolver"
+		class="org.springframework.web.servlet.i18n.FixedLocaleResolver"
+		p:defaultLocale="zh_CN" />
+	<!-- Theme Resolver -->
+	<bean id="themeResolver" class="org.jasig.cas.services.web.ServiceThemeResolver"
+		p:defaultThemeName="${cas.themeResolver.defaultThemeName}"
+		p:argumentExtractors-ref="argumentExtractors" p:servicesManager-ref="servicesManager">
+		<property name="mobileBrowsers">
+			<map>
+				<entry key=".*iPhone.*" value="iphone" />
+				<entry key=".*Android.*" value="iphone" />
+				<entry key=".*Safari.*Pre.*" value="iphone" />
+				<entry key=".*Nokia.*AppleWebKit.*" value="iphone" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- Error Handler Resolver -->
+	<bean id="errorHandlerResolver" class="org.jasig.cas.web.NoSuchFlowExecutionExceptionResolver" />
+
+	<!-- Spring MVC -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.ResourceBundleViewResolver"
+		p:order="0">
+		<property name="basenames">
+			<list>
+				<value>${cas.viewResolver}</value>
+				<value>${cas.protocol_view}</value>
+			</list>
+		</property>
+	</bean>
+	<!-- Url based View Resolver -->
+	<bean id="urlBasedViewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver"
+		p:viewClass="org.springframework.web.servlet.view.InternalResourceView"
+		p:prefix="/WEB-INF/view/jsp/" p:suffix=".jsp" p:order="1" />
+	<bean id="handlerMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/logout">
+					logoutController
+				</prop>
+				<prop key="/serviceValidate">
+					serviceValidateController
+				</prop>
+				<prop key="/validate">
+					legacyValidateController
+				</prop>
+				<prop key="/proxy">
+					proxyController
+				</prop>
+				<prop key="/proxyValidate">
+					proxyValidateController
+				</prop>
+				<prop key="/samlValidate">
+					samlValidateController
+				</prop>
+
+				<prop key="/services/add.html">
+					addRegisteredServiceSimpleFormController
+				</prop>
+
+				<prop key="/services/edit.html">
+					editRegisteredServiceSimpleFormController
+				</prop>
+
+				<prop key="/services/loggedOut.html">
+					serviceLogoutViewController
+				</prop>
+
+				<prop key="/services/viewStatistics.html">
+					viewStatisticsController
+				</prop>
+				<prop key="/getBuapxServiceTicket">
+					getBuapxServiceTicketController
+				</prop>
+
+				<prop key="/webSso">
+					webCommonSsoController
+				</prop>
+
+
+
+				<prop key="/buapxServiceValidate">    <!-- 用于验证c/s模式下的票据，于/serviceValidate区分 -->
+					buapxServiceValidateController
+				</prop>
+				<prop key="/buapxPasswordValidate">
+					validatePasswordController
+				</prop>
+
+				<prop key="/buapxEncPasswordValidate">
+					validateEncPasswordController
+				</prop>
+
+
+				<prop key="/getCaptchaImage">
+					captchaImageGeneratorController
+				</prop>
+
+				<prop key="/checkCaptcha">
+					captchaCheckController
+				</prop>
+			    <prop key="/validatePasswordCreateTgt">    
+					validatePasswordCreateTgtController
+				</prop>
+
+				<prop key="/services/*">manageRegisteredServicesMultiActionController</prop>
+				<prop key="/openid/*">openIdProviderController</prop>
+				<prop key="/authorizationFailure.html">passThroughController</prop>
+				<prop key="/403.html">passThroughController</prop>
+			</props>
+		</property>
+		<property name="alwaysUseFullPath" value="true" />
+		<!-- uncomment this to enable sending PageRequest events. <property name="interceptors">
+			<list> <ref bean="pageRequestHandlerInterceptorAdapter" /> </list> </property> -->
+	</bean>
+	<!-- Maps requests to flows in the flowRegistry; for example, a request
+		for resource /hotels/booking maps to a flow with id "hotels/booking" If no
+		flow is found with that id, Spring MVC proceeds to the next HandlerMapping
+		(order=3 below). -->
+	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping"
+		p:flowRegistry-ref="flowRegistry" p:order="2">
+		<!-- <property name="interceptors"> <ref local="localeChangeInterceptor"
+			/> </property> -->
+	</bean>
+	<bean id="localeChangeInterceptor"
+		class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+	<!-- Flow expression language supports -->
+	<bean id="expressionParser"
+		class="org.springframework.webflow.expression.WebFlowOgnlExpressionParser" />
+
+
+	<!--Spring Web flow -->
+	<!-- Registers the web flow that can be execuated -->
+	<webflow:flow-registry id="flowRegistry"
+		flow-builder-services="builder">
+		<webflow:flow-location
+			path="classpath:buapx_framework/flow/login-webflow.xml" id="login" />
+		<webflow:flow-location
+			path="classpath:buapx_framework/flow/remoteLogin-webflow.xml" id="remoteLogin" />
+	</webflow:flow-registry>
+	<!-- An flow executor that execute web flow -->
+	<webflow:flow-executor id="flowExecutor"
+		flow-registry="flowRegistry">
+		<webflow:flow-execution-attributes>
+			<webflow:always-redirect-on-pause
+				value="false" />
+		</webflow:flow-execution-attributes>
+	</webflow:flow-executor>
+
+	<!-- 发布环境需要改为development=false -->
+	<webflow:flow-builder-services id="builder"
+		view-factory-creator="viewFactoryCreator" expression-parser="expressionParser"
+		development="false" />
+
+	<!-- Configures Web Flow to use spring mvc resourceBundleViewResolver -->
+	<bean id="viewFactoryCreator"
+		class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
+		<property name="viewResolvers">
+			<list>
+				<ref local="viewResolver" />
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- Adapter to use the plain Controller workflow interface with the generic
+		DispatcherServlet. Supports handlers that implement the LastModified interface. -->
+	<bean
+		class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+
+	<!-- Enables web flows; responsible for calling the Spring Web Flow system
+		to execute a flow when one is mapped. -->
+	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter"
+		p:flowExecutor-ref="flowExecutor" p:flowUrlHandler-ref="flowUrlHandler" />
+	<bean id="flowUrlHandler" class="org.jasig.cas.web.flow.CasDefaultFlowUrlHandler" />
+
+
+	<!-- Controllers -->
+
+	<bean id="passThroughController"
+		class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
+
+	<bean id="openIdProviderController" class="org.jasig.cas.web.OpenIdProviderController"
+		p:loginUrl="${cas.securityContext.casProcessingFilterEntryPoint.loginUrl}" />
+
+	<bean id="serviceLogoutViewController"
+		class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+		p:viewName="serviceLogoutView" />
+
+	<bean id="proxyValidateController" class="org.jasig.cas.web.ServiceValidateController"
+		p:centralAuthenticationService-ref="centralAuthenticationService"
+		p:proxyHandler-ref="proxy20Handler" p:argumentExtractor-ref="casArgumentExtractor" />
+
+<!-- 票据验证。 殴冶的不做用户映射，产品的做映射 -->
+	<bean id="serviceValidateController" class="com.baosight.buapx.web.BuapxServiceValidateController"
+		p:validationSpecificationClass="org.jasig.cas.validation.Cas20WithoutProxyingValidationSpecification"
+		p:centralAuthenticationService-ref="centralAuthenticationService"
+		p:proxyHandler-ref="proxy20Handler" p:argumentExtractor-ref="casArgumentExtractor"
+		p:userTranslator-ref="userTranslator" p:authManager-ref="nosqlAuthManager" />
+
+	<bean id="samlValidateController" class="org.jasig.cas.web.ServiceValidateController"
+		p:validationSpecificationClass="org.jasig.cas.validation.Cas20WithoutProxyingValidationSpecification"
+		p:centralAuthenticationService-ref="centralAuthenticationService"
+		p:proxyHandler-ref="proxy20Handler" p:argumentExtractor-ref="samlArgumentExtractor"
+		p:successView="casSamlServiceSuccessView" p:failureView="casSamlServiceFailureView" />
+
+	<bean id="legacyValidateController" class="org.jasig.cas.web.ServiceValidateController"
+		p:proxyHandler-ref="proxy10Handler" p:successView="cas1ServiceSuccessView"
+		p:failureView="cas1ServiceFailureView"
+		p:validationSpecificationClass="org.jasig.cas.validation.Cas10ProtocolValidationSpecification"
+		p:centralAuthenticationService-ref="centralAuthenticationService"
+		p:argumentExtractor-ref="casArgumentExtractor" />
+
+	<bean id="proxyController" class="org.jasig.cas.web.ProxyController"
+		p:centralAuthenticationService-ref="centralAuthenticationService" />
+
+	<bean id="viewStatisticsController" class="org.jasig.cas.web.StatisticsController"
+		p:casTicketSuffix="${host.name}">
+		<constructor-arg index="0" ref="ticketRegistry" />
+	</bean>
+	<!--  登出 -->
+	<bean id="logoutController" class="com.baosight.buapx.cas.logout.LogoutController"
+		p:centralAuthenticationService-ref="centralAuthenticationService"
+		p:logoutView="casLogoutView" p:warnCookieGenerator-ref="warnCookieGenerator"
+		p:ticketGrantingTicketCookieGenerator-ref="ticketGrantingTicketCookieGenerator"
+		p:ticketRegistry-ref="ticketRegistry" p:authManager-ref="nosqlAuthManager" 
+		p:loginedUserCookieGenerator-ref="loginedUserCookieGenerator"/>
+
+
+	<bean id="addRegisteredServiceSimpleFormController"
+		class="org.jasig.cas.services.web.RegisteredServiceSimpleFormController"
+		p:formView="addServiceView" p:successView="addServiceView"
+		p:commandName="registeredService" p:validator-ref="registeredServiceValidator"
+		p:sessionForm="true">
+		<constructor-arg index="0" ref="servicesManager" />
+		<constructor-arg index="1" ref="attributeRepository" />
+	</bean>
+
+	<bean id="editRegisteredServiceSimpleFormController"
+		class="org.jasig.cas.services.web.RegisteredServiceSimpleFormController"
+		p:formView="editServiceView" p:successView="editServiceView"
+		p:commandName="registeredService" p:validator-ref="registeredServiceValidator"
+		p:sessionForm="false">
+		<constructor-arg index="0" ref="servicesManager" />
+		<constructor-arg index="1" ref="attributeRepository" />
+	</bean>
+
+	<bean id="manageRegisteredServicesMultiActionController"
+		class="org.jasig.cas.services.web.ManageRegisteredServicesMultiActionController">
+		<constructor-arg index="0" ref="servicesManager" />
+		<constructor-arg index="1"
+			value="${cas.securityContext.serviceProperties.service}" />
+	</bean>
+
+	<!-- buapx 取得st,根据 tgt -->
+	<bean id="getBuapxServiceTicketController" class="com.baosight.buapx.web.GetBuapxServiceTicketController"
+		p:centralAuthenticationService-ref="centralAuthenticationService"
+		p:tgcCookieName="${cas.TgtCookieName}">
+	</bean>
+ 
+	<bean id="webCommonSsoController" class="com.baosight.buapx.web.WebCommonSsoController"
+		p:centralAuthenticationService-ref="centralAuthenticationService"
+		p:tgcCookieName="${cas.TgtCookieName}">
+	</bean>
+
+ 
+	<!--  验证密码是否正确，传入明码密码 -->
+	<bean id="validatePasswordController" class="com.baosight.buapx.web.ValidatePasswordController"
+		p:authManager-ref="nosqlAuthManager"
+		p:activeUrl="${cas.activeUrl}">
+		
+	</bean>
+	<!-- 验证密码是否正确，传入加密过的密码 -->
+	<bean id="validateEncPasswordController" class="com.baosight.buapx.web.ValidateEncryptedPasswordController"
+		p:authManager-ref="nosqlAuthManager"
+		p:secKey="110819welmwlerk;l">
+	</bean>
+
+	<!--  用于c/s模式下的验证票据，不同于 /serviceValidate -->
+	<bean id="buapxServiceValidateController"
+		class="com.baosight.buapx.web.BuapxServiceTicketValidateController"
+		p:centralAuthenticationService-ref="centralAuthenticationService"
+		p:userTranslator-ref="userTranslator">
+	</bean>
+	<!-- 传入用户名和密码，生成tgc -->
+	<bean id="validatePasswordCreateTgtController" class="com.baosight.buapx.web.ValidatePasswordCreateTgtController"
+		  p:authManager-ref="nosqlAuthManager" p:centralAuthenticationService-ref="centralAuthenticationService"> 		
+	</bean>
+	<!-- Controllers::End -->
+
+	<!-- Flow_Actions -->
+	<bean id="initialFlowSetupAction" class="com.baosight.buapx.web.flow.InitialFlowSetupAction"
+		p:argumentExtractors-ref="argumentExtractors"
+		p:warnCookieGenerator-ref="warnCookieGenerator"
+		p:ticketGrantingTicketCookieGenerator-ref="ticketGrantingTicketCookieGenerator"
+		p:loginedUserCookieGenerator-ref="loginedUserCookieGenerator" />
+
+
+	<bean id="authenticationViaFormAction" class="com.baosight.buapx.web.flow.AuthenticationViaFormAction"
+		p:centralAuthenticationService-ref="centralAuthenticationService"
+		p:warnCookieGenerator-ref="warnCookieGenerator" 
+		p:loginedUserCookieGenerator-ref="loginedUserCookieGenerator"
+		p:authManager-ref="nosqlAuthManager" />
+
+
+	<!-- 根据宝钢初次登陆的激活流程改写，若无此流程，则将此action替换为下方注释的内容 -->
+	<bean id="generateServiceTicketAction" class="com.baosight.buapx.web.flow.GenerateServiceTicketAction"
+		p:centralAuthenticationService-ref="centralAuthenticationService"
+		p:activeUrl="${cas.activeUrl}" p:ticketRegistry-ref="ticketRegistry"
+		p:authManager-ref="nosqlAuthManager" />
+
+	<!-- <bean id="generateServiceTicketAction" class="org.jasig.cas.web.flow.GenerateServiceTicketAction" -->
+	<!-- p:centralAuthenticationService-ref="centralAuthenticationService" /> -->
+
+	<bean id="sendTicketGrantingTicketAction" class="com.baosight.buapx.web.flow.SendTicketGrantingTicketAction"
+		p:centralAuthenticationService-ref="centralAuthenticationService"
+		p:ticketGrantingTicketCookieGenerator-ref="ticketGrantingTicketCookieGenerator"
+		p:loginedUserCookieGenerator-ref="loginedUserCookieGenerator" />
+
+
+
+	<bean id="captchaErrorCountAction" class="com.baosight.buapx.web.flow.CaptchaErrorCountAction" />
+
+	<bean id="mobileJudgementAction" class="com.baosight.buapx.web.flow.MobileJudgementAction" />
+
+
+	<bean id="captchaValidateAction" class="com.baosight.buapx.web.flow.CaptchaValidateAction"/>
+	
+
+
+	<bean id="pwdExpireCheckAction" class="com.baosight.buapx.web.flow.PwdExpireCheckAction"
+		p:authManager-ref="nosqlAuthManager" p:pwdChangePage="${cas.pwdChangePage}" />
+
+
+	<bean id="remoteCredentialResolveAction" class="com.baosight.buapx.web.flow.remotelogin.RemoteCredentialResolveAction" />
+
+	<bean id="remoteLoginPageResolveAction" class="com.baosight.buapx.web.flow.remotelogin.RemoteLoginPageResolveAction" />
+
+	<!-- Flow_Actions::End -->
+
+	<bean id="gatewayServicesManagementCheck"
+		class="com.baosight.buapx.web.flow.GatewayServicesManagementCheck">
+		<constructor-arg index="0" ref="servicesManager" />
+	</bean>
+
+	<bean id="registeredServiceValidator"
+		class="org.jasig.cas.services.web.support.RegisteredServiceValidator"
+		p:servicesManager-ref="servicesManager" />
+	<!-- JSR-303 Annotation based validate -->
+	<bean id="credentialsValidator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"
+		p:messageInterpolator-ref="messageInterpolator" />
+
+
+
+	<bean id="buapxCredentialsValidator"
+		class="com.baosight.buapx.cas.authentication.principal.validator.BuapxUsernamePasswordCredentialsValidator" />
+
+	<bean id="captchaImageGeneratorController"
+		class="com.baosight.buapx.web.flow.CaptchaImageGeneratorController" />
+
+	<bean id="captchaCheckController" class="com.baosight.buapx.web.flow.CaptchaCheckController" />
+
+
+	<bean id="defaultManageableImageCaptchaService"
+		class="com.octo.captcha.service.image.DefaultManageableImageCaptchaService" />
+
+<bean id="serviceCoder" class="com.baosight.buapx.web.flow.remotelogin.ServiceCoder"/>
+
+</beans>

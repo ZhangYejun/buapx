@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>
+			classpath*:buapx_framework/spring/application*.xml,
+			classpath*:buapx_framework/cas/*.xml
+		</param-value>
+  </context-param>
+  <context-param>
+    <param-name>webAppRootKey</param-name>
+  <param-value>cas20131102.root</param-value>
+   </context-param>
+  <context-param>
+    <param-name>log4jConfigLocation</param-name>
+    <param-value>classpath:log4j.xml</param-value>
+  </context-param>
+  <context-param>
+    <param-name>log4jExposeWebAppRoot</param-name>
+    <param-value>true</param-value>
+  </context-param>
+
+<!--   <filter> -->
+<!--     <filter-name>springSecurityFilterChain</filter-name> -->
+<!--     <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> -->
+<!--   </filter> -->
+  <filter>
+    <filter-name>characterEncodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>characterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+<!--   <filter-mapping> -->
+<!--     <filter-name>springSecurityFilterChain</filter-name> -->
+<!--     <url-pattern>/services/*</url-pattern> -->
+<!--   </filter-mapping> -->
+
+  <listener>
+    <listener-class>
+			org.springframework.web.util.Log4jConfigListener
+		</listener-class>
+  </listener>
+  <listener>
+    <listener-class>
+			 org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+  </listener>
+  <servlet>
+    <servlet-name>cas</servlet-name>
+    <servlet-class>
+			org.jasig.cas.web.init.SafeDispatcherServlet
+		</servlet-class>
+    <init-param>
+      <param-name>publishContext</param-name>
+      <param-value>false</param-value>
+    </init-param>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath*:buapx_framework/spring/mvc/*.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/remoteLogin</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/jsLogin</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/validate</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/serviceValidate</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/samlValidate</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/proxy</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/proxyValidate</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/CentralAuthenticationService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/services/add.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/services/viewStatistics.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/services/logout.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/services/loggedOut.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/services/manage.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/services/edit.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/openid/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/services/deleteRegisteredService.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/appUserInfoQuery</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/getBuapxServiceTicket</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/buapxServiceValidate</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/buapxPasswordValidate</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/buapxEncPasswordValidate</url-pattern>
+  </servlet-mapping>
+
+    <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/getCasStatus</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/huaweiSso</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/webSso</url-pattern>
+  </servlet-mapping>
+
+
+
+    <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/getCaRandomNumber</url-pattern>
+  </servlet-mapping>
+
+     <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/getCaptchaImage</url-pattern>
+  </servlet-mapping>
+
+   <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/checkCaptcha</url-pattern>
+  </servlet-mapping>
+
+    <!--    <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/invokeRtx</url-pattern>
+  </servlet-mapping> -->
+
+   <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/validatePasswordCreateTgt</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/authorizationFailure.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>cas</servlet-name>
+    <url-pattern>/403.html</url-pattern>
+  </servlet-mapping>
+  <session-config>
+    <session-timeout>480</session-timeout>
+  </session-config>
+  <error-page>
+    <exception-type>org.springframework.context.ApplicationContextException</exception-type>
+    <location>/WEB-INF/view/jsp/brokenContext.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/WEB-INF/view/jsp/errors.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/</location>
+  </error-page>
+  <error-page>
+    <error-code>403</error-code>
+    <location>/403.html</location>
+  </error-page>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+   <filter>
+    <display-name>TransNameFilter</display-name>
+    <filter-name>TransNameFilter</filter-name>
+    <filter-class>com.baosight.buapx.web.filter.TransNameFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>TransNameFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+  </filter-mapping>
+</web-app>

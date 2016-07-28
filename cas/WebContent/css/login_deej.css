@@ -1,0 +1,344 @@
+html {
+	padding: 0px;
+	margin: 0px;
+}
+body {
+	background-image: url(../images/background_blue_whitegradient_.png);
+	background-repeat: repeat-x;
+	background-position: left top;
+	margin: 0px;
+	background-color: #fff;
+	padding: 0px;
+}
+TABLE.branding {
+	height: 28px;
+	display: none;
+}
+TD.logo {
+	border-bottom: #fff 1px solid;
+	background-color: #fff
+}
+.pagelink {
+	font-size: 11px;
+	font-family: tahoma, verdana, geneva, arial, helvetica, sans-serif;
+	white-space: nowrap;
+	font-weight: normal;
+	color: #00309c;
+}
+.appname {
+	overflow: hidden;
+	font-size: 17px;
+	font-family: tahoma, verdana, geneva, arial, helvetica, sans-serif;
+	white-space: nowrap;
+	font-weight: bold;
+	color: #093e7d;
+	padding-right: 12px;
+	width: 350px;
+}
+.topbody {
+	background-repeat: repeat-y;
+	background-position: right 50%;
+	margin: 0px;
+	background-color: #fff;
+}
+.bottomborder {
+	border-bottom: #fff 1px solid
+}
+.lefttop {
+	background-repeat: no-repeat;
+	background-position: left top;
+	padding-bottom: 12px;
+	padding-top: 12px;
+	padding-left: 0px;
+	margin: 0px;
+	padding-right: 0px;
+}
+.leftmiddle {
+	background-repeat: repeat-y;
+	background-position: left 50%;
+}
+.leftbottom {
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	padding-bottom: 0px;
+	padding-top: 0px;
+	padding-left: 12px;
+	margin: 0px;
+	padding-right: 0px;
+}
+.topmiddle {
+	background-repeat: repeat-x;
+	background-position: 50% top;
+	width: 100%;
+}
+.boxcontent {
+	background: none transparent scroll repeat 0% 0%;
+	text-align: left;
+	margin: 0px;
+}
+.loginlabel {
+	font-size: 14px;
+	font-family: tahoma, verdana, geneva, arial, helvetica, sans-serif;
+	font-weight: bold;
+	color: #9cacc9;
+	padding-bottom: 10px;
+	padding-top: 0px;
+	padding-left: 0px;
+	margin: 0px;
+	display: none;
+	padding-right: 0px;
+}
+.opttext {
+	font-size: 11px;
+	font-family: tahoma, verdana, geneva, arial, helvetica, sans-serif;
+	white-space: pre-wrap;
+	font-weight: normal;
+	color: #000;
+	display: none;
+}
+.bottommiddle {
+	background-repeat: repeat-x;
+	background-position: 50% bottom;
+}
+.righttop {
+	background-repeat: no-repeat;
+	background-position: right top;
+	padding-bottom: 12px;
+	padding-top: 12px;
+	padding-left: 0px;
+	margin: 0px;
+	padding-right: 0px;
+}
+.rightmiddle {
+	background-repeat: repeat-y;
+	background-position: right 50%;
+}
+.rightbottom {
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	padding-bottom: 12px;
+	padding-top: 0px;
+	padding-left: 0px;
+	display: block;
+	padding-right: 12px;
+}
+.signingin {
+	font-size: 16px;
+	font-family: tahoma, verdana, geneva, arial, helvetica, sans-serif;
+	font-weight: bold;
+	color: #9cacc9;
+	padding-bottom: 15px;
+	padding-top: 15px;
+	padding-left: 15px;
+	margin: 0px;
+	padding-right: 15px;
+}
+.line-height {
+	line-height: 1.25em;
+}
+.innertable {
+	border-top: 0px;
+	border-right: 0px;
+	border-bottom: 0px;
+	padding-bottom: 0px;
+	padding-top: 0px;
+	padding-left: 0px;
+	border-left: 0px;
+	padding-right: 0px;
+	width: 100%;
+}
+.margin-top5 {
+	margin-top: 5px;
+}
+.margin-top3 {
+	margin-top: 3px;
+}
+.margin-bottom5 {
+	margin-bottom: 5px;
+}
+.margin-bottom2 {
+	margin-bottom: 2px;
+}
+.padding-left12 {
+	padding-left: 12px;
+}
+.padding-right12 {
+	padding-right: 12px
+}
+.padding-right3 {
+	padding-right: 3px;
+}
+.pcpadding {
+	padding-bottom: 3px;
+	padding-top: 3px;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+.dtext {
+	font-size: 11px;
+	font-family: tahoma, verdana, geneva, arial, helvetica, sans-serif;
+	font-weight: normal;
+	color: #fff;
+}
+.mtext {
+	font-size: 11px;
+	font-family: tahoma, verdana, geneva, arial, helvetica, sans-serif;
+	font-weight: normal;
+	color: #000;
+}
+.dlink {
+	color: #a9dff5;
+}
+.mlink {
+	color: #039;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+.defaulthidden {
+	font-size: 11px;
+	font-family: tahoma, verdana, geneva, arial, helvetica, sans-serif;
+	vertical-align: text-top;
+	font-weight: normal;
+	color: #000;
+	display: none;
+	visibility: hidden;
+}
+.stylenormal {
+	font-size: 11px;
+	font-family: tahoma, verdana, geneva, arial, helvetica, sans-serif;
+	font-weight: normal;
+	color: #000;
+}
+.footer {
+	HEIGHT: 16px;
+	DISPLAY: none;
+}
+.Copyright {
+	font-size: 11px;
+	font-family: tahoma, verdana, geneva, arial, helvetica, sans-serif;
+	white-space: nowrap;
+	font-weight: normal;
+	color: #000;
+	padding-left: 12px;
+}
+.link {
+	font-size: 11px;
+	font-family: tahoma, verdana, geneva, arial, helvetica, sans-serif;
+	white-space: nowrap;
+	font-weight: normal;
+	color: #c5ffff;
+}
+.b_bg {
+	background-image: url(../images/login_bg.jpg);
+	background-repeat: no-repeat;
+	background-position: top center;
+	height: 449px;
+}
+.centerDiv {
+	height: 409px;
+	padding-top: 0px;
+	width: 1003px;
+	margin: auto;
+}
+DIV.logonPageMessageDiv {
+	vertical-align: middle;
+	text-align: left;
+	padding-left: 25px;
+}
+.SkipToContentLink {
+	position: absolute;
+	top: -999px;
+}
+.offScreenVPATLabel {
+	position: absolute;
+	z-index: 1;
+	top: -999px;
+}
+.SAWLogonInput {
+	font-size: 11px;
+	font-family: tahoma;
+}
+TABLE.logonFormTable {
+	margin-left: auto;
+	margin-right: auto;
+}
+TABLE.logonFormTable TD {
+	TEXT-ALIGN: right;
+}
+TD.langSelectCell {
+	border-top: black 1px solid;
+	padding-top: 5px;
+}
+TD.langSelectCell IMG {
+	vertical-align: middle;
+}
+TD.langSelectCell INPUT {
+	vertical-align: middle;
+}
+.loggingInBody {
+	cursor: wait;
+}
+TD.logonFormLabelCell {
+	font-weight: bold;
+	color: #7f7f7f;
+}
+TABLE.logonErrorTable {
+	position: relative;
+}
+TABLE.logonErrorTable TD.logonErrorTitleCell {
+	font-weight: bold;
+	text-align: left;
+}
+TABLE.logonErrorTable TD.logonErrorMessageCell {
+	text-align: left;
+}
+#content {
+	vertical-align: middle;
+}
+#content-cell {
+	vertical-align: top;
+}
+.login_box {
+	margin-top: 0px;
+	height: 200px;
+	margin-left: 655px;
+	width: 200px;
+}
+.c_top {
+	height: 226px;
+}
+.word {
+	color: #6d9594;
+	font-size: 12px;
+	font-weight: bold;
+	margin-top: 0px;
+	padding-top:0px;
+}
+.word .bluelink {
+	color: #6d9594;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: none;
+}
+.bluelink:hover {
+	color: #FF6600;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: none;
+}
+hr {
+	border-left: #999 solid 0px;
+	border-right: #999 solid 0px;
+	border-bottom: #999 solid 1px;
+	border-top: #999 solid 0px;
+}

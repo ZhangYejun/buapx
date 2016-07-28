@@ -1,0 +1,137 @@
+html {
+	border-left-width: 0px; height: 100%; border-right-width: 0px; border-bottom-width: 0px; padding-bottom: 0px; padding-top: 0px; padding-left: 0px; margin: 0px; padding-right: 0px; border-top-width: 0px; width: 100%;margin-top: 30px
+}
+body {
+	 color: black;
+}
+
+#forgetPwdTr{
+	display:none;
+	}
+.login_bg {
+	 margin-left: 10px; margin-top: 0px;
+}
+.login_box {
+margin-top: -20px;
+padding-top:0px;
+}
+.login_box tr td {
+	padding-bottom: 14px; 
+	
+	
+}
+#reset{
+	display:none;
+	
+	}
+.usernamefldtxt {
+	 color: black;
+    font-family: 黑体;
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 100%;
+    margin: 5px 5px 10px;
+    text-align: left;
+    width:68px; 
+display:block;
+	
+}
+.usernamefldinput {
+	 background: none repeat scroll 0 0 #F4F9FF;
+    border: 1px solid #7B9DC0;
+    color: #2D4368;
+    font-family: 微软雅黑,宋体;
+    font-size: 14px;
+    height: 30px;
+     width: 230px;
+	padding:0px;
+	margin-top:0px;
+	
+}
+
+.loginbtn1 {
+ background: url(../images/login_btn.jpg) no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 39px;
+    overflow: visible;
+    padding-top: 3px;
+    text-align: left;
+    width: 235px;
+	display: block;
+	text-align: center;
+	line-height: 67px;
+	font-size: 0px;
+	float: left;
+	text-indent: -10000px;
+	margin-left:20px;
+	border: none;
+	margin-top:-20px;
+}
+.loginbtn2 {
+	border-left-width: 0px; font-size: 0px; height:26px; border-right-width: 0px; background: url(../images/resetpswbutton.png) no-repeat 0% 100%; border-bottom-width: 0px; float: left; margin-top: 5px; display: block; line-height: 0; border-top-width: 0px; width:72px; text-indent: -9999px;margin-left:10px;
+}
+
+.bottonfld {
+	margin-left: 58px; margin-top: 15px;
+}
+ input[type="text"], input[type="password"], .ui-autocomplete-input, textarea, .uneditable-input {
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+    color: black;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 18px;
+    padding: 2px;
+}
+.inputField {
+    -moz-box-sizing: border-box;
+    color: black;
+    font-family: Consolas,å¾®è½¯éé»,å®ä½,arial;
+    font-size: 16px;
+    height: 24px;
+    line-height: 24px;
+}
+.inputField {
+    background: none repeat scroll 0 0 #F4F9FF;
+    border: 1px solid #7B9DC0;
+    color: #2D4368;
+    font-family: 微软雅黑,宋体;
+    font-size: 16px;
+    height: 25px;
+    margin-bottom: -3px;
+    width: 155px;
+}
+.inputField {
+    -moz-box-sizing: border-box;
+    color: black;
+    font-family: Consolas,微软雅黑,宋体,arial;
+    font-size: 16px;
+    height: 24px;
+}
+.inputField {
+    background: none repeat scroll 0 0 #F4F9FF;
+    border: 1px solid #7B9DC0;
+    color: #2D4368;
+    font-family: 微软雅黑,宋体,serif;
+    font-size: 16px;
+    height: 17px;
+    margin-bottom: -3px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    width: 155px;
+}
+.errors{
+	margin-left:130px;
+	display: inline;
+	font-size: 12px;
+	color: red;
+	}
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
+    border: 1px solid #80BFFF;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px rgba(82, 168, 236, 0.6);
+    outline: 0 none;
+}
+input[type="file"]:focus, input[type="checkbox"]:focus, select:focus {
+    box-shadow: none;
+    outline: 1px dotted #666666;
+}
