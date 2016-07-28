@@ -113,8 +113,10 @@ function getCookie(name) {
 			</ul>
 			<table width="80%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
-					<td style="padding: 0px" align="center"><span class="input_wrong"><form:errors
-								path="*" element="font" />&nbsp</span></td>
+					<td style="padding: 0px" align="center">
+					<span class="input_wrong">
+						<form:errors path="*" element="font" />&nbsp</span>
+					</td>
 				</tr>
 				<tr>
 					<td><form:input cssClass="input_login ie7float" 
